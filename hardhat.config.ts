@@ -5,8 +5,8 @@ import HardhatToolboxViem from '@nomicfoundation/hardhat-toolbox-viem'
 // import './tasks/hardhat-deploy-viem.js'
 
 import dotenv from 'dotenv'
-// import 'hardhat-abi-exporter'
-// import 'hardhat-contract-sizer'
+import HardhatAbiExporter from '@solidstate/hardhat-abi-exporter'
+import HardhatContractSizer from '@solidstate/hardhat-contract-sizer'
 // import 'hardhat-deploy'
 import type { HardhatUserConfig } from 'hardhat/config'
 
@@ -33,7 +33,7 @@ if (process.env.DEPLOYER_KEY) {
 export const archivedDeploymentPath = './deployments/archive'
 
 const config = {
-  plugins: [HardhatToolboxViem],
+  plugins: [HardhatToolboxViem, HardhatAbiExporter, HardhatContractSizer],
   tasks: [taskEsmFix],
   networks: {
     hardhat: {
