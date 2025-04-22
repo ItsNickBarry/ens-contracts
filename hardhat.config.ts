@@ -13,7 +13,7 @@ import type { HardhatUserConfig } from 'hardhat/config' with { 'resolution-mode'
 import('@ensdomains/hardhat-chai-matchers-viem')
 
 // hardhat actions
-import './tasks/esm_fix.js'
+import taskEsmFix from './tasks/esm_fix.js'
 
 // Load environment variables from .env file. Suppress warnings using silent
 // if this file is missing. dotenv will never modify any environment variables
@@ -34,6 +34,7 @@ export const archivedDeploymentPath = './deployments/archive'
 
 const config = {
   plugins: [HardhatToolboxViem],
+  tasks: [taskEsmFix],
   networks: {
     hardhat: {
       type: 'edr',
