@@ -1,15 +1,14 @@
-import fs = require('fs/promises')
-import task_names = require('hardhat/builtin-tasks/task-names')
-import config = require('hardhat/config')
-import path = require('path')
+import { writeFile } from 'fs/promises'
+import path from 'path'
+import { overrideTask } from 'hardhat/config'
 
-config
-  .subtask(task_names.TASK_COMPILE_SOLIDITY)
+// TODO: import task name constant
+export default overrideTask('compile')
   .setAction(async (_, { config }, runSuper) => {
-    const superRes = await runSuper()
+    const superRes = await runSuper({})
 
     try {
-      await fs.writeFile(
+      await writeFile(
         path.join(config.paths.artifacts, 'package.json'),
         '{ "type": "commonjs" }',
       )
@@ -19,3 +18,4 @@ config
 
     return superRes
   })
+  .build()

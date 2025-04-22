@@ -1,19 +1,20 @@
 import type {
   KeyedClient,
   DeployContractConfig as OriginalDeployContractConfig,
-} from '@nomicfoundation/hardhat-viem/types.js'
-import { extendEnvironment } from 'hardhat/config.js'
-import { lazyObject } from 'hardhat/plugins.js'
+} from '@nomicfoundation/hardhat-viem/types'
+import { extendEnvironment } from 'hardhat/config'
+import { lazyObject } from 'hardhat/plugins'
+import type { HardhatRuntimeEnvironment } from 'hardhat/types/hre'
+
 import type {
   Artifact,
-  HardhatRuntimeEnvironment,
   ContractTypesMap as OriginalContractTypesMap,
-} from 'hardhat/types'
+} from 'hardhat/types/artifacts'
 
-import 'hardhat-deploy/dist/types.js'
+import 'hardhat-deploy/dist/types'
 import type { DeployOptions, DeployResult } from 'hardhat-deploy/dist/types.js'
-import 'hardhat/types/config.js'
-import 'hardhat/types/runtime.js'
+import 'hardhat/types/config'
+import 'hardhat/types/runtime'
 import {
   getAddress,
   getContract as getViemContract,

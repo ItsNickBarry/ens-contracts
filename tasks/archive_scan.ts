@@ -1,14 +1,9 @@
-// import { existsSync } from 'fs'
-import fs = require('fs')
+import { existsSync } from 'fs'
+import { task } from 'hardhat/config'
+import { archivedDeploymentPath } from '../hardhat.config.js'
 
-// import { task } from 'hardhat/config.js'
-import config = require('hardhat/config')
-
-// import { archivedDeploymentPath } from '../hardhat.config.cjs'
-import ic = require('../hardhat.config.cjs')
-
-config
-  .task('archive-scan', 'Scans the deployments for unarchived deployments')
+export default task('archive-scan')
+  .setDescription('Scans the deployments for unarchived deployments')
   .setAction(async (_, hre) => {
     const network = hre.network.name
 
@@ -19,9 +14,9 @@ config
       if (!deployment.receipt || !deployment.bytecode) continue
 
       const archiveName = `${deploymentName}_${network}_${deployment.receipt.blockNumber}`
-      const archivePath = `${ic.archivedDeploymentPath}/${archiveName}.sol`
+      const archivePath = `${archivedDeploymentPath}/${archiveName}.sol`
 
-      if (fs.existsSync(archivePath)) {
+      if (existsSync(archivePath)) {
         continue
       }
 
@@ -37,10 +32,11 @@ config
         }
       }
 
-      await hre.run('save', {
+      await hre.tasks.getTask('save').run({
         contract: deploymentName,
         block: String(deployment.receipt.blockNumber),
         fullName,
       })
     }
   })
+  .build()
