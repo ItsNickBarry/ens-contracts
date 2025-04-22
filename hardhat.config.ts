@@ -1,7 +1,5 @@
-// from @nomicfoundation/hardhat-toolbox-viem to avoid module issue
-import '@nomicfoundation/hardhat-ignition-viem'
 import '@nomicfoundation/hardhat-verify'
-import '@nomicfoundation/hardhat-viem'
+import HardhatToolboxViem from '@nomicfoundation/hardhat-toolbox-viem'
 import 'hardhat-gas-reporter'
 import 'solidity-coverage'
 import './tasks/hardhat-deploy-viem.js'
@@ -35,6 +33,7 @@ if (process.env.DEPLOYER_KEY) {
 export const archivedDeploymentPath = './deployments/archive'
 
 const config = {
+  plugins: [HardhatToolboxViem],
   networks: {
     hardhat: {
       type: 'edr',
