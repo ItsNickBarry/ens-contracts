@@ -4,8 +4,8 @@ import { overrideTask } from 'hardhat/config'
 
 // TODO: import task name constant
 export default overrideTask('compile')
-  .setAction(async (_, { config }, runSuper) => {
-    const superRes = await runSuper({})
+  .setAction(async (args, { config }, runSuper) => {
+    const superRes = await runSuper(args)
 
     try {
       await writeFile(
