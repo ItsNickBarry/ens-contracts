@@ -10,7 +10,7 @@ import dotenv from 'dotenv'
 import 'hardhat-abi-exporter'
 import 'hardhat-contract-sizer'
 import 'hardhat-deploy'
-import { HardhatUserConfig } from 'hardhat/config'
+import type { HardhatUserConfig } from 'hardhat/config' with { 'resolution-mode': 'import' }
 
 import('@ensdomains/hardhat-chai-matchers-viem')
 
@@ -37,8 +37,9 @@ export const archivedDeploymentPath = './deployments/archive'
 const config = {
   networks: {
     hardhat: {
-      saveDeployments: false,
-      tags: ['test', 'legacy', 'use_root'],
+      type: 'edr',
+      // saveDeployments: false,
+      // tags: ['test', 'legacy', 'use_root'],
       allowUnlimitedContractSize: false,
       forking: {
         url: `https://mainnet.infura.io/v3/${process.env.INFURA_API_KEY}`,
@@ -46,48 +47,55 @@ const config = {
       },
     },
     localhost: {
+      type: 'http',
       url: 'http://127.0.0.1:8545/',
       saveDeployments: false,
       tags: ['test', 'legacy', 'use_root'],
     },
     rinkeby: {
+      type: 'http',
       url: `https://rinkeby.infura.io/v3/${process.env.INFURA_API_KEY}`,
       tags: ['test', 'legacy', 'use_root'],
       chainId: 4,
       accounts: real_accounts,
     },
     ropsten: {
+      type: 'http',
       url: `https://ropsten.infura.io/v3/${process.env.INFURA_API_KEY}`,
       tags: ['test', 'legacy', 'use_root'],
       chainId: 3,
       accounts: real_accounts,
     },
     goerli: {
+      type: 'http',
       url: `https://goerli.infura.io/v3/${process.env.INFURA_API_KEY}`,
       tags: ['test', 'legacy', 'use_root'],
       chainId: 5,
       accounts: real_accounts,
     },
     sepolia: {
+      type: 'http',
       url: `https://sepolia.infura.io/v3/${process.env.INFURA_API_KEY}`,
       tags: ['test', 'legacy', 'use_root'],
       chainId: 11155111,
       accounts: real_accounts,
     },
     holesky: {
+      type: 'http',
       url: `https://holesky.gateway.tenderly.co`,
       tags: ['test', 'legacy', 'use_root'],
       chainId: 17000,
       accounts: real_accounts,
     },
     mainnet: {
+      type: 'http',
       url: `https://mainnet.infura.io/v3/${process.env.INFURA_API_KEY}`,
       tags: ['legacy', 'use_root'],
       chainId: 1,
       accounts: real_accounts,
     },
   },
-  mocha: {},
+  // mocha: {},
   solidity: {
     compilers: [
       {
