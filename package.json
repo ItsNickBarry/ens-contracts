@@ -52,6 +52,8 @@
     "@ensdomains/buffer": "^0.1.1",
     "@ensdomains/solsha1": "0.0.3",
     "@openzeppelin/contracts": "^4.1.0",
+    "@solidstate/hardhat-abi-exporter": "../hardhat-plugins/hardhat-abi-exporter",
+    "@solidstate/hardhat-contract-sizer": "../hardhat-plugins/hardhat-contract-sizer",
     "dns-packet": "^5.3.0"
   },
   "patchedDependencies": {
