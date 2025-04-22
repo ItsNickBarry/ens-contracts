@@ -4,7 +4,7 @@ import '@nomicfoundation/hardhat-verify'
 import '@nomicfoundation/hardhat-viem'
 import 'hardhat-gas-reporter'
 import 'solidity-coverage'
-import './tasks/hardhat-deploy-viem.cjs'
+import './tasks/hardhat-deploy-viem.js'
 
 import dotenv from 'dotenv'
 import 'hardhat-abi-exporter'
@@ -15,7 +15,7 @@ import type { HardhatUserConfig } from 'hardhat/config' with { 'resolution-mode'
 import('@ensdomains/hardhat-chai-matchers-viem')
 
 // hardhat actions
-import './tasks/esm_fix.cjs'
+import './tasks/esm_fix.js'
 
 // Load environment variables from .env file. Suppress warnings using silent
 // if this file is missing. dotenv will never modify any environment variables

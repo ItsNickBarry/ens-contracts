@@ -24,7 +24,7 @@ import {
   type TransactionReceipt,
   type Address as viemAddress,
 } from 'viem'
-import type Config from '../hardhat.config.cjs'
+import type Config from '../hardhat.config.js'
 
 type ContractTypesMap = Omit<
   OriginalContractTypesMap,
