@@ -1,16 +1,16 @@
-import '@nomicfoundation/hardhat-verify'
+// import '@nomicfoundation/hardhat-verify'
 import HardhatToolboxViem from '@nomicfoundation/hardhat-toolbox-viem'
-import 'hardhat-gas-reporter'
-import 'solidity-coverage'
-import './tasks/hardhat-deploy-viem.js'
+// import 'hardhat-gas-reporter'
+// import 'solidity-coverage'
+// import './tasks/hardhat-deploy-viem.js'
 
 import dotenv from 'dotenv'
-import 'hardhat-abi-exporter'
-import 'hardhat-contract-sizer'
-import 'hardhat-deploy'
-import type { HardhatUserConfig } from 'hardhat/config' with { 'resolution-mode': 'import' }
+// import 'hardhat-abi-exporter'
+// import 'hardhat-contract-sizer'
+// import 'hardhat-deploy'
+import type { HardhatUserConfig } from 'hardhat/config'
 
-import('@ensdomains/hardhat-chai-matchers-viem')
+// import('@ensdomains/hardhat-chai-matchers-viem')
 
 // hardhat actions
 import taskEsmFix from './tasks/esm_fix.js'
